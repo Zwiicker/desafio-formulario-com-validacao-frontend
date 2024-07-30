@@ -1,9 +1,19 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const jobPositions = [
   // Lista de cargos
 ];
+
+const validationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Nome completo é obrigatório"),
+  email: Yup.string().email("Formato de e-mail inválido").required("E-mail é obrigatório"),
+  phone: Yup.string().required("Telefone é obrigatório"),
+  jobPosition: Yup.string().required("Cargo pretendido é obrigatório"),
+  linkedIn: Yup.string().url("URL inválida"),
+  github: Yup.string().url("URL inválida")
+});
 
 const JobApplicationForm = () => (
   <Formik
@@ -15,6 +25,7 @@ const JobApplicationForm = () => (
       linkedIn: "",
       github: ""
     }}
+    validationSchema={validationSchema}
     onSubmit={(values) => {
       console.log(values);
     }}
@@ -58,7 +69,7 @@ const JobApplicationForm = () => (
           <Field type="url" name="github" />
           <ErrorMessage name="github" component="div" />
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit">Enviar</button>  
       </Form>
     )}
   </Formik>
