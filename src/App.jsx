@@ -1,16 +1,13 @@
+// src/App.jsx
+import React from 'react';
+import JobApplicationForm from './JobApplicationForm.jsx'; // Importa o componente do formulário
 
-import './App.css'
-
-function App() {
-
+const App = () => {
   return (
-    <>
-      <main>
-        <h1>Seja bem vindo! :)</h1>
-        <p>Terceiro Desafio: Formulário de Cadastro de Membros</p>
-      </main>
-    </>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <JobApplicationForm />
+    </div>
   );
-}
+};
 
-export default App
+export default App;
